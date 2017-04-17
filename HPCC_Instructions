@@ -1,0 +1,43 @@
+#Title: Running Jobs through the HPCC
+#Author: A.D. Wright
+  #With help from P. Bills during HPCC office hours
+#Date: 3/27/2017
+
+##
+#### Logging in to MobaXTerm
+##
+
+#open terminal
+#type:
+  'ssh username@hpcc.msu.edu'
+#type in MSU id password
+
+
+##
+#### Running a job through the HPCC 
+##
+
+## Need to log-in to development node (recommend  using dev-intel16)
+ssh dev-intel16
+
+## Need to load current versions of R, JAGS, and necessary GNU
+# Only necessary to do do if you plan on running the job directly on the devlopment node, and not through a formal job submission
+module load GNU/4.4.5
+module load R/3.2.0
+module load jags/4.0.1
+
+## Need to transfer files over to MobaXterm (can drag from a Windows File Explorer folder)
+  #These files include: data, R script, JAGS model, and qsub file.
+  #If at any point you need to edit files after they've been transfered, use 'nano (file name)'
+  #If at any point you need to view files after they've been transfered, use 'cat (file name)'
+  
+## Need to run qsub command on qsub file
+qsub example.qsub
+
+
+
+
+
+
+
+

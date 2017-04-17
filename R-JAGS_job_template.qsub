@@ -1,0 +1,26 @@
+#!/bin/bash -login
+
+# how long?
+#PBS -l walltime=03:00:00 
+
+# how much memory?
+#PBS -l mem=10gb
+
+# specify resources needed. 
+#PBS -l nodes=1:ppn=4
+
+# email me
+#PBS -m abe
+
+# change to current directory
+cd $PBS_O_WORKDIR
+
+# add necessary modules
+module load GNU/4.4.5
+module load R/3.2.0
+module load JAGS/4.0.1
+
+# run R commandline with the Rscript command
+Rscript example.R
+
+qstat -f $PBS_JOBID
