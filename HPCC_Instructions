@@ -1,15 +1,19 @@
 #Title: Running Jobs through the HPCC
 #Author: A.D. Wright
-  #With help from P. Bills during HPCC office hours
 #Date: 3/27/2017
 
+##These instructions assume you already have an account through the HPCC and have downloaded the apppropriate software (in this case, I use the recommended MobaxTerm)
+  # If you haven't done this yet, see the HPCC wiki for more information: wiki.hpcc.msu.edu
+    #Go to User Manual 
+      #Sections "HPCC Basics - Requesting HPCC Accounts" & "HPCC Basics - Connecting to the HPCC - Installing an X-server on Windows"
+
 ##
-#### Logging in to MobaXTerm
+#### Logging in to MobaxTerm
 ##
 
 #open terminal
 #type:
-  'ssh username@hpcc.msu.edu'
+  ssh username@hpcc.msu.edu
 #type in MSU id password
 
 
@@ -17,22 +21,37 @@
 #### Running a job through the HPCC 
 ##
 
-## Need to log-in to development node (recommend  using dev-intel16)
-ssh dev-intel16
+## Need to log-in to development node (recommendusing dev-intel16)
+#type:
+  ssh dev-intel16
 
 ## Need to load current versions of R, JAGS, and necessary GNU
-# Only necessary to do do if you plan on running the job directly on the devlopment node, and not through a formal job submission
-module load GNU/4.4.5
-module load R/3.2.0
-module load jags/4.0.1
+  # Only necessary to do do if you plan on running the job directly on the development node, and not through a formal job submission (otherwise this information will be in your qsub file)
+#Type:
+  module load GNU/4.4.5
+  module load R/3.2.0
+  module load jags/4.0.1
 
 ## Need to transfer files over to MobaXterm (can drag from a Windows File Explorer folder)
-  #These files include: data, R script, JAGS model, and qsub file.
+  #These files should include everything in your working directory you need to run your R script, your script, and a qsub file (which is used to submit a job to the HPCC).
+    #For help writing a qsub file, see file 'R-JAGS_job_template.qsub'
+    #Things to remember in your R script: 1) Don't set a working directory (that will be done in the qsub file), & 2) Make sure you have code that saves the output/objects from the script that you want
   #If at any point you need to edit files after they've been transfered, use 'nano (file name)'
   #If at any point you need to view files after they've been transfered, use 'cat (file name)'
   
 ## Need to run qsub command on qsub file
-qsub example.qsub
+#Type:
+  qsub example.qsub
+
+
+##
+#### For more help
+##
+
+# Learn from the experts! 
+  # 1) Office Hours: Monday/Thursday 1-2 PM in the BPS Building, Room 1440
+  # 2) User Manual/Wiki: https://wiki.hpcc.msu.edu/display/hpccdocs/Documentation+and+User+Manual
+
 
 
 
