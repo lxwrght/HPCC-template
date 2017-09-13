@@ -52,7 +52,11 @@
   # 1) Office Hours: Monday/Thursday 1-2 PM in the BPS Building, Room 1440
   # 2) User Manual/Wiki: https://wiki.hpcc.msu.edu/display/hpccdocs/Documentation+and+User+Manual
 
-
+# To get examples for the HPCC and R:
+  # Load example files
+  module load powertools
+  getexample R_example
+  getexample intro2hpcc
 
 
 
