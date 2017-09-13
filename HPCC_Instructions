@@ -16,6 +16,9 @@
   ssh username@hpcc.msu.edu
 #type in MSU id password
 
+# To test that it is working correctly:
+ #type:
+ xeyes
 
 ##
 #### Running a job through the HPCC 
