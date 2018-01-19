@@ -16,9 +16,11 @@
 cd $PBS_O_WORKDIR
 
 # add necessary modules
-module load GNU/4.4.5
-module load R/3.2.0
-module load JAGS/4.0.1
+module load GNU/4.9
+module load OpenMPI/1.10.0
+module load R/3.3.2
+module load JAGS/4.2.0
+
 
 # run R commandline with the Rscript command
 Rscript example.R
