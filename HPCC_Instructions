@@ -31,9 +31,10 @@
 ## Need to load current versions of R, JAGS, and necessary GNU
   # Only necessary to do do if you plan on running the job directly on the development node, and not through a formal job submission (otherwise this information will be in your qsub file)
 #Type:
-  module load GNU/4.4.5
-  module load R/3.2.0
-  module load jags/4.0.1
+  module load GNU/4.9
+  module load OpenMPI/1.10.0
+  module load R/3.3.2
+  module load jags/4.2.0
 
 ## Need to transfer files over to MobaXterm (can drag from a Windows File Explorer folder)
   #These files should include everything in your working directory you need to run your R script, your script, and a qsub file (which is used to submit a job to the HPCC).
