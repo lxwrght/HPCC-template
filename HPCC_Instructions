@@ -1,11 +1,11 @@
 #Title: Running Jobs through the HPCC
-#Author: A.D. Wright
-#Date: 3/27/2017
+#Author: A.D. Wright, E.R. Zylstra
+#Last Updated: 2/27/2019
 
 ##These instructions assume you already have an account through the HPCC and have downloaded the apppropriate software (in this case, I use the recommended MobaxTerm)
   # If you haven't done this yet, see the HPCC wiki for more information: wiki.hpcc.msu.edu
-    #Go to User Manual 
-      #Sections "HPCC Basics - Requesting HPCC Accounts" & "HPCC Basics - Connecting to the HPCC - Installing an X-server on Windows"
+    #Go to How to Access HPCC
+      #Sections "Obtain a HPCC account" & "Install SHH Client" & 'Connect to HPC system"
 
 ##
 #### Logging in to MobaxTerm
@@ -14,7 +14,7 @@
 #open terminal
 #type:
   ssh username@hpcc.msu.edu
-#type in MSU id password
+#type in MSU id password if prompted (might have to do it twice)
 
 # To test that it is working correctly:
  #type:
@@ -24,7 +24,7 @@
 #### Running a job through the HPCC 
 ##
 
-## Need to log-in to development node (recommendusing dev-intel16)
+## Need to log-in to development node (dev-intel14, dev-intel16, or dev-intel18 will work)
 #type:
   ssh dev-intel16
 
@@ -37,15 +37,19 @@
   module load jags/4.2.0
 
 ## Need to transfer files over to MobaXterm (can drag from a Windows File Explorer folder)
-  #These files should include everything in your working directory you need to run your R script, your script, and a qsub file (which is used to submit a job to the HPCC).
-    #For help writing a qsub file, see file 'R-JAGS_job_template.qsub'
-    #Things to remember in your R script: 1) Don't set a working directory (that will be done in the qsub file), & 2) Make sure you have code that saves the output/objects from the script that you want
+  #These files should include everything in your working directory you need to run your R script, your script, and an .sb file (which is used to submit a job to the HPCC).
+    #For help writing an .sb file, see file 'R-JAGS_job_template.sb'
+    #Things to remember in your R script: 1) Don't set a working directory (that will be done in the sb file), & 2) Make sure you have code that saves the output/objects from the script that you want
   #If at any point you need to edit files after they've been transfered, use 'nano (file name)'
   #If at any point you need to view files after they've been transfered, use 'cat (file name)'
+
+## Need to change directory to the folder that contains your files (R script, sb file, JAGS file, and all data files)
+#type:
+  cd 'folder path'
   
-## Need to run qsub command on qsub file
+## Need to run sbatch command on sb file
 #Type:
-  qsub example.qsub
+  sb example.sb
 
 
 ##
@@ -54,8 +58,10 @@
 
 # Learn from the experts! 
   # 1) Office Hours: Monday/Thursday 1-2 PM in the BPS Building, Room 1440
-  # 2) User Manual/Wiki: https://wiki.hpcc.msu.edu/display/hpccdocs/Documentation+and+User+Manual
+  # 2) User Manual/Wiki: wiki.hpcc.msu.edu (see especially the sections labeled: Job Scheduling by SLURM and Job Management by SLURM)
+  # 3) More information about running R and JAGS: https://wiki.hpcc.msu.edu/display/ITH/R+-+CentOS+7
 
+## not sure if the following code is still current?
 # To get examples for the HPCC and R:
   # Load example files
   module load powertools
